@@ -6,6 +6,23 @@ import { OnboardingTour } from "@/features/onboarding";
 import { CopyToastProvider } from "@/features/copy-toast";
 import { DailyCheckIn } from "@/features/promo";
 import { CornerPromo } from "@/features/promo";
+import { GlobalQueueStatusBar } from "@/features/generation-queue";
+import { useLocation } from "@/shared/routing";
+
+function AppOverlays() {
+  const { pathname } = useLocation();
+  const showPromos = pathname !== "/queue";
+
+  return (
+    <>
+      <OnboardingTour />
+      <CopyToastProvider />
+      {showPromos ? <DailyCheckIn /> : null}
+      {showPromos ? <CornerPromo /> : null}
+      {pathname !== "/queue" ? <GlobalQueueStatusBar /> : null}
+    </>
+  );
+}
 
 export default function App() {
   return (
@@ -15,10 +32,7 @@ export default function App() {
           <AppRoutes />
         </ErrorBoundary>
       </Layout>
-      <OnboardingTour />
-      <CopyToastProvider />
-      <DailyCheckIn />
-      <CornerPromo />
+      <AppOverlays />
     </AppProviders>
   );
 }
