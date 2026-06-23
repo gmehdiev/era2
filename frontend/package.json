@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:queue": "node scripts/queue-logic.test.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.8",

@@ -17,7 +17,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
   const location = useLocation();
 
-  // Auth page has no layout at all
+  // Auth page has no layout at all.
   if (location.pathname === "/auth") {
     return <>{children}</>;
   }
